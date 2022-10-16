@@ -19,6 +19,7 @@ public class ClienteRepository implements IClienteRepository {
 
     @Autowired
     IClienteMapper clienteMapper;
+    
     @Override
     public List<Cliente> getAll() {
         return clienteMapper.toClientes((List<ClienteEntidad>)clienteCrudRepository.findAll());
@@ -36,11 +37,6 @@ public class ClienteRepository implements IClienteRepository {
 
     @Override
     public Cliente save(Cliente cliente) {
-        System.out.println(cliente.toString());
-        System.out.println("Entra");
-        System.out.println("Entro");
-        ClienteEntidad clienteEntidad= clienteMapper.toClienteEntidad(cliente);
-        System.out.println(clienteEntidad.toString());
          return clienteMapper.toCliente(clienteCrudRepository.save(clienteEntidad));
     }
 
